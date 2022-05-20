@@ -1,0 +1,192 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+     <link rel="stylesheet" href="{% static 'css/regestration.css' %}">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+    <script src="java script/registration.js"></script>
+    <title>Create a new account</title>
+  </head>
+  <body>
+      			<!-- Messages ---------->
+{% for message in messages %}
+            <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <b>Error! </b>{{ message }}
+</div>
+{% endfor %}
+
+    <div class="container-fluid">
+        <div class="card bg-light">
+            <div class="card-body mx-auto">
+                <h1 class="card-title mt-3 text-center">Create Account</h1>
+                <p class="text-center">Start Watching in best way....</p>
+                <a href="https://accounts.google.com/signin/v2/identifier?flowName=GlifWebSignIn&flowEntry=ServiceLogin" class="btn btn-block btn-danger"><i class="fab fa-google mr-2"></i>Login by Google</a>
+                <a href="#" class="btn btn-block btn-primary mt-2"><i class="fab fa-facebook mr-2"></i>Login by Facebook</a>
+                <p class="divider "><span class="bg-light">OR</span></p>
+                <form action="{% url 'signup' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                        <input type="text" id="exampleInputName" aria-describedby="emailhelp" name="username" placeholder="Enter Name">
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                        </div>
+                        <input type="email" id="exampleInputEmail" aria-describedby="emailhelp" name="email" placeholder="Enter Email">
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-phone"></i>
+                            </span>
+                        </div>
+                        <select class="custom-select" style="max-width: 80px;">
+                            <option>+91</option>
+                            <option>+49</option>
+                            <option>+75</option>
+                        </select>
+                        <input type="number" class="form-control" name="phone" placeholder="Enter Phone">
+
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-film"></i>
+                            </span>
+                        </div>
+                        <select id="multiple" class="selectpicker" name="language" multiple>
+                            <option disabled>--Select User Type--</option>
+                            <option>French</option>
+                            <option>English</option>
+                            <option>Japanese</option>
+                            <option>Hindi</option>
+                        </select>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-film"></i>
+                            </span>
+                        </div>
+                        <select id="multiples" class="selectpicker" name="genre" multiple>
+                            <option disabled>--Select User Type--</option>
+                            <option>Action</option>
+                            <option>Comedy</option>
+                            <option>Drama</option>
+                            <option>Fantasy</option>
+                            <option>Horror</option>
+                            <option>History</option>
+                            <option>Romance</option>
+                            <option>Thriller</option>
+                        </select>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-lock"></i>
+                            </span>
+                        </div>
+                        <input type="password" id="exampleInputEmail" aria-describedby="emailhelp" name="password" placeholder="Enter Password">
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-unlock"></i>
+                            </span>
+                        </div>
+                        <input type="password" id="exampleInputEmail" name="repassword" aria-describedby="emailhelp" placeholder="Repeat Password">
+                    </div>
+
+                    <button type="submit" class="btn btn-block btn-success">Create</button>
+                    <p class="text-center mt-3">Have an account? <a href="{% url 'Login' %}">Login page</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer class="page-footer bg-dark mt-0">
+        <div class="footercolor">
+            <div class="container">
+                <div class="row py-4 d-flex align-items-center">
+                    <div class="col-md-12 text-center">
+                   <a href="#"><i class="fab fa-facebook-f text-white mr-4"></i></a>
+                   <a href="#"><i class="fab fa-twitter text-white mr-4"></i></a>
+                   <a href="#"><i class="fab fa-google-plus-g text-white mr-4"></i></a>
+                   <a href="#"><i class="fab fa-linkedin-in text-white mr-4"></i></a>
+                   <a href="#"><i class="fab fa-instagram text-white mr-4"></i></a>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="container text-center text-md-left mt-5">
+           <div class="row">
+               <div class="col-md-3 mx-auto mb-4">
+                 <h6 class="text-uppercase font-weight-bold">The Providers</h6>
+                 <hr class="horizon mb-4 mt-0 d-inline-block mx-auto">
+                 <p class="mt-2">Your website is the center of your digital eco-system, like a brick and mortar location, the experience matters once a customer enters, just as much as the perception they have of you before they walk through the door.</p>
+               </div>
+               <div class="col-md-3 mx-auto mb-4">
+                <h6 class="text-uppercase font-weight-bold">Products</h6>
+                <hr class="horizon mb-4 mt-0 d-inline-block mx-auto">
+
+                <ul class="list-unstyled">
+                  <li class="my-2"><a href="#">HTML5</a></li>
+                  <li class="my-2"><a href="#">Bootstrap</a></li>
+                  <li class="my-2"><a href="#">Java Script</a></li>
+                  <li class="my-2"><a href="#">CSS</a></li>
+                </ul>
+                </div>
+                <div class="col-md-3 mx-auto mb-4">
+                    <h6 class="text-uppercase font-weight-bold">Useful Links</h6>
+                    <hr class="horizon mb-4 mt-0 d-inline-block mx-auto">
+                    <ul class="list-unstyled">
+                        <li class="my-2"><a href="{% url 'Dashboard' %}">Home</a></li>
+                        <li class="my-2"><a href="{% url 'profile' %}">Profile</a></li>
+                        <li class="my-2"><a href="{% url 'Contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mx-auto mb-4">
+                    <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                    <hr class="horizon mb-4 mt-0 d-inline-block mx-auto" >
+                    <ul class="list-unstyled">
+                        <li class="my-2"><i class="fas fa-home mr-3"></i>Raj Kumar Goel Institute of Technology</li>
+                        <li class="my-2"><i class="fas fa-envelope mr-3"></i>ReviceAdvice@gmail.com</li>
+                        <li class="my-2"><i class="fas fa-phone mr-3"></i>7836977728</li>
+                        <li class="my-2"><i class="fas fa-print mr-3"></i>12345321</li>
+                    </ul>
+                </div>
+           </div>
+        </div>
+        <div class="footer-copyright text-center py-3">
+            <p>&copy; Copyright
+                <a href="#">ReviceAdvice.com</a>
+            </p>
+            <p>Designed By the Providers</p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+ 
+</html>
